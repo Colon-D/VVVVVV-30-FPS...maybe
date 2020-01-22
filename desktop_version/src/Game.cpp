@@ -3351,7 +3351,7 @@ void Game::updatestate( Graphics& dwgfx, mapclass& map, entityclass& obj, Utilit
             map.finalx = 100;
             map.finaly = 100;
 
-            dwgfx.cutscenebarspos = 320;
+			dwgfx.oldcutscenebarspos = dwgfx.cutscenebarspos = 320;
 
             teleport_to_new_area = true;
             teleportscript = "gamecomplete";

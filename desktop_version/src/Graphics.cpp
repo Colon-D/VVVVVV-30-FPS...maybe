@@ -34,7 +34,7 @@ Graphics::Graphics()
     trinketcolset = false;
 
     showcutscenebars = false;
-    cutscenebarspos = 0;
+	oldcutscenebarspos = cutscenebarspos = 0;
     notextoutline = false;
 
     flipmode = false;
@@ -801,15 +801,30 @@ void Graphics::drawpartimage( int t, int xp, int yp, int wp, int hp)
   BlitSurfaceStandard(images[t], &trect2, backBuffer, &trect);
 }
 
-void Graphics::cutscenebars()
+void Graphics::cutscenebarsfixed() {
+	if (showcutscenebars) {
+		oldcutscenebarspos = cutscenebarspos;
+		cutscenebarspos += 25;
+		cutscenebarspos = std::min(cutscenebarspos, 361);
+	}
+	else {
+		//disappearing
+		if (cutscenebarspos > 0) {
+			oldcutscenebarspos = cutscenebarspos;
+			cutscenebarspos -= 25;
+			cutscenebarspos = std::max(cutscenebarspos, 0);
+		}
+	}
+}
+
+void Graphics::cutscenebars(const float alpha)
 {
     if (showcutscenebars)
     {
-        cutscenebarspos += 25;
-        cutscenebarspos = std::min(cutscenebarspos, 361);
-        FillRect(backBuffer, 0, 0, cutscenebarspos, 16, 0x000000);
+		int interpolatedcutscenebarspos = lerp(oldcutscenebarspos, cutscenebarspos, alpha);
+        FillRect(backBuffer, 0, 0, interpolatedcutscenebarspos, 16, 0x000000);
         //backbuffer.fillRect(new Rectangle(0, 0, cutscenebarspos, 16), 0x000000);
-        FillRect(backBuffer, 360-cutscenebarspos, 224, cutscenebarspos, 16, 0x000000);
+        FillRect(backBuffer, 360- interpolatedcutscenebarspos, 224, interpolatedcutscenebarspos, 16, 0x000000);
         //backbuffer.fillRect(new Rectangle(360-cutscenebarspos, 224, cutscenebarspos, 16), 0x000000);
     }
     else
@@ -817,12 +832,11 @@ void Graphics::cutscenebars()
         //disappearing
         if (cutscenebarspos > 0)
         {
-			cutscenebarspos -= 25;
-			cutscenebarspos = std::max(cutscenebarspos, 0);
+			int interpolatedcutscenebarspos = lerp(oldcutscenebarspos, cutscenebarspos, alpha);
             //draw
-            FillRect(backBuffer, 0, 0, cutscenebarspos, 16, 0x000000);
+            FillRect(backBuffer, 0, 0, interpolatedcutscenebarspos, 16, 0x000000);
             //backbuffer.fillRect(new Rectangle(0, 0, cutscenebarspos, 16), 0x000000);
-            FillRect(backBuffer, 360-cutscenebarspos, 224, cutscenebarspos, 16, 0x000000);
+            FillRect(backBuffer, 360- interpolatedcutscenebarspos, 224, interpolatedcutscenebarspos, 16, 0x000000);
             //backbuffer.fillRect(new Rectangle(360-cutscenebarspos, 224, cutscenebarspos, 16), 0x000000);
         }
     }

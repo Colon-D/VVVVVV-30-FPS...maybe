@@ -1531,6 +1531,7 @@ void gamerenderfixedpost(Graphics& dwgfx, mapclass& map, Game& game, entityclass
 		}
 	}
 
+	dwgfx.cutscenebarsfixed();
 	dwgfx.drawguifixed();
 
 	if (game.activeactivity > -1) {
@@ -1600,7 +1601,7 @@ void gamerender(Graphics& dwgfx, mapclass& map, Game& game, entityclass& obj, Ut
         dwgfx.bprint(5, 5, "[Press ENTER to return to editor]", 220 - (help.glow), 220 - (help.glow), 255 - (help.glow / 2), false);
     }
 
-    dwgfx.cutscenebars();
+    dwgfx.cutscenebars(alpha);
     dwgfx.drawfade(alpha);
 	BlitSurfaceStandard(dwgfx.backBuffer, NULL, dwgfx.tempBuffer, NULL);
 
@@ -2683,7 +2684,7 @@ void towerrenderfixedpre(Game& game, mapclass& map, entityclass& obj) {
 	}
 }
 
-void towerrenderfixedpost(Graphics& dwgfx, Game& game, mapclass& map, entityclass& obj, UtilityClass& help) {
+void towerrenderfixedpost(Graphics& dwgfx, Game& game, entityclass& obj, UtilityClass& help) {
 	if (!game.completestop) {
 		for (int i = 0; i < obj.nentity; i++) {
 			//Animate the entities
@@ -2692,6 +2693,7 @@ void towerrenderfixedpost(Graphics& dwgfx, Game& game, mapclass& map, entityclas
 	}
 	dwgfx.drawentitiesfixed(obj, help);
 
+	dwgfx.cutscenebarsfixed();
 	dwgfx.drawguifixed();
 
 	if (game.flashlight > 0 && !game.noflashingmode) {
@@ -2725,7 +2727,7 @@ void towerrender(Graphics& dwgfx, Game& game, mapclass& map, entityclass& obj, U
     		dwgfx.backbuffer.fillRect(obj.blocks[i].rect, 0xDDDDDD);
     }
       }*/
-    dwgfx.cutscenebars();
+    dwgfx.cutscenebars(alpha);
 
     dwgfx.drawgui(help);
     if (dwgfx.flipmode)
@@ -2928,7 +2930,7 @@ void teleporterrender(Graphics& dwgfx, Game& game, mapclass& map, entityclass& o
         dwgfx.drawtile(40 + 3 + (tempx * 12), 22 + (tempy * 9), temp);
     }
 
-    dwgfx.cutscenebars();
+    dwgfx.cutscenebars(1.f);
 
 
     if (game.useteleporter)

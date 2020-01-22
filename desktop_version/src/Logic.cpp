@@ -68,7 +68,7 @@ void gamecompletelogic(Graphics& dwgfx, Game& game, entityclass& obj,  musicclas
     {
         //Fix some graphical things
         dwgfx.showcutscenebars = false;
-        dwgfx.cutscenebarspos = 0;
+        dwgfx.oldcutscenebarspos = dwgfx.cutscenebarspos = 0;
         //Return to game
         game.gamestate = GAMECOMPLETE2;
         dwgfx.fademode = 4;
@@ -107,7 +107,7 @@ void gamecompletelogic2(Graphics& dwgfx, Game& game, entityclass& obj,  musiccla
     {
         //Fix some graphical things
         dwgfx.showcutscenebars = false;
-        dwgfx.cutscenebarspos = 0;
+        dwgfx.oldcutscenebarspos = dwgfx.cutscenebarspos = 0;
         //Fix the save thingy
         game.deletequick();
         int tmp=music.currentsong;

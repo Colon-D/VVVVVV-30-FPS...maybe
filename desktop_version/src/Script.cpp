@@ -2542,7 +2542,7 @@ void scriptclass::startgamemode( int t, KeyPoll& key, Graphics& dwgfx, Game& gam
 		game.start(obj, music);
 		game.jumpheld = true;
 		dwgfx.showcutscenebars = true;
-		dwgfx.cutscenebarspos = 320;
+		dwgfx.oldcutscenebarspos = dwgfx.cutscenebarspos = 320;
 
 		//set flipmode
 		if (dwgfx.setflipmode) dwgfx.flipmode = true;
@@ -2795,7 +2795,7 @@ void scriptclass::startgamemode( int t, KeyPoll& key, Graphics& dwgfx, Game& gam
 		game.start(obj, music);
 		game.jumpheld = true;
 		dwgfx.showcutscenebars = true;
-		dwgfx.cutscenebarspos = 320;
+		dwgfx.oldcutscenebarspos = dwgfx.cutscenebarspos = 320;
 		//game.starttest(obj, music);
 		//music.play(4);
 
@@ -2824,7 +2824,7 @@ void scriptclass::startgamemode( int t, KeyPoll& key, Graphics& dwgfx, Game& gam
 		game.start(obj, music);
 		game.jumpheld = true;
 		dwgfx.showcutscenebars = true;
-		dwgfx.cutscenebarspos = 320;
+		dwgfx.oldcutscenebarspos = dwgfx.cutscenebarspos = 320;
 		//game.starttest(obj, music);
 		//music.play(4);
 

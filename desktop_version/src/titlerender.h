@@ -21,7 +21,7 @@ extern int temp;
 void titlerender(Graphics& dwgfx, mapclass& map, Game& game, entityclass& obj, UtilityClass& help, musicclass& music);
 
 void towerrenderfixedpre(Game& game, mapclass& map, entityclass& obj);
-void towerrenderfixedpost(Graphics& dwgfx, Game& game, mapclass& map, entityclass& obj, UtilityClass& help);
+void towerrenderfixedpost(Graphics& dwgfx, Game& game, entityclass& obj, UtilityClass& help);
 void towerrender(Graphics& dwgfx, Game& game, mapclass& map, entityclass& obj, UtilityClass& help, const float alpha);
 
 void gamerenderfixedpre(mapclass& map, Game& game, entityclass& obj);

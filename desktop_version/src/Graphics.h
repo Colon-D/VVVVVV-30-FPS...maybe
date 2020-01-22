@@ -88,7 +88,8 @@ public:
 
 	int crewcolour(const int t);
 
-	void cutscenebars();
+	void cutscenebarsfixed();
+	void cutscenebars(const float alpha);
 
 	void drawpartimage(int t, int xp, int yp, int wp, int hp);
 
@@ -271,6 +272,7 @@ public:
 
 	bool showcutscenebars;
 	int cutscenebarspos;
+	int oldcutscenebarspos;
 
 	std::vector<RectFloat> stars;
 	std::vector<int> starsspeed;

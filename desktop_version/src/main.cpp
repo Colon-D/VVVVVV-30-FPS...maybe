@@ -358,7 +358,7 @@ int main(int argc, char *argv[])
 						//}
 						towerrenderfixedpre(game, map, obj);
 						towerlogic(graphics, game, obj, music, map, help);
-						towerrenderfixedpost(graphics, game, map, obj, help);
+						towerrenderfixedpost(graphics, game, obj, help);
 
 					}
 					else {

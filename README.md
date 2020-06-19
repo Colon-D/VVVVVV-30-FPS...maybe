@@ -1,6 +1,11 @@
 VVVVVV over 30 FPS mod - Version 1.1
 -
 
+This fork is now obsolete as the original repository has better support for over 30 fps support than this fork has.
+I recommend you use the original repository for over 30 FPS support instead.
+
+Here is the original readme:
+
 Why
 -
 Because it looks nice
